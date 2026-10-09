@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff0f4">
+<title>Gửi anh ❤️</title>
+<style>
+:root{--pink:#e995a8;--pale:#f8c5d0;--wine:#a54c65;--paper:#fffaf5;--ink:#68454d}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:grid;place-items:center;padding:22px 16px;overflow-x:hidden;background:radial-gradient(circle at 15% 18%,#fff 0 2px,transparent 3px),radial-gradient(circle at 85% 30%,#fff9 0 2px,transparent 3px),linear-gradient(145deg,#fff8f4,#fbe2e9 55%,#f7d3df);background-size:42px 42px,58px 58px,auto;color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+.scene{width:min(100%,410px);text-align:center}
+.eyebrow{margin:0 0 8px;font:600 10px/1.5 Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#b56a7e}
+h1{margin:0;color:#98445d;font-size:clamp(32px,9vw,43px);font-weight:500}
+.hint{font:14px/1.6 Arial,sans-serif;color:#a06e7a;margin:12px 0 26px}
+.wrap{position:relative;width:min(100%,340px);height:270px;margin:auto;perspective:1000px}
+.envelope{position:absolute;inset:54px 0 0;width:100%;height:190px;border:0;padding:0;border-radius:8px 8px 13px 13px;background:var(--pink);box-shadow:0 20px 36px #9d4b631f;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.envelope:focus-visible,.replay:focus-visible{outline:3px solid var(--wine);outline-offset:5px}
+.back{position:absolute;inset:0;border-radius:inherit;background:#f4b3c1}
+.letter{position:absolute;z-index:2;left:6%;width:88%;bottom:10px;min-height:165px;padding:20px 15px 18px;background:var(--paper);border-radius:5px;box-shadow:0 4px 12px #7e35401a;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .85s cubic-bezier(.2,.75,.2,1),min-height .7s ease}
+.letter-heart{font-size:23px;color:#ca6c83;margin-bottom:7px}
+.message{font-size:clamp(15px,4vw,17px);line-height:1.6;opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;transition-delay:0s}
+.message p{margin:0 0 7px}
+.message .sign{font-style:italic;color:#b44e6b;margin-top:10px}
+.flap{position:absolute;z-index:4;inset:0 0 auto;height:115px;background:var(--pale);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform .7s ease}
+.pocket{position:absolute;z-index:3;inset:0;border-radius:inherit;background:linear-gradient(145deg,#f4b4c2,#e68ba0);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%)}
+.seal{position:absolute;z-index:5;left:50%;top:91px;transform:translateX(-50%);width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#b64e6a;color:#fff4f6;font-size:21px;box-shadow:0 3px 8px #7c2a4328;transition:opacity .25s,transform .25s}
+.envelope.open .flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .letter{transform:translateY(-128px);min-height:235px;transition-delay:.15s}
+.envelope.open .message{opacity:1;transform:translateY(0);transition-delay:.75s}
+.envelope.open .seal{opacity:0;transform:translateX(-50%) scale(.7)}
+.replay{margin-top:9px;border:1px solid #b45c742e;border-radius:999px;padding:12px 20px;background:#fff9;color:#98445d;font:600 13px Arial,sans-serif;cursor:pointer}
+.footer{margin-top:24px;font:12px Arial,sans-serif;letter-spacing:.04em;color:#b17a86}
+.floating{position:fixed;bottom:-30px;pointer-events:none;animation:float 4.8s linear forwards}
+@keyframes float{0%{transform:translateY(0) rotate(0);opacity:0}12%{opacity:.8}100%{transform:translateY(-110vh) rotate(28deg);opacity:0}}
+@media(max-width:360px){.wrap{height:255px}.envelope{top:48px;height:185px}.flap{height:106px}.seal{top:82px}.envelope.open .letter{transform:translateY(-118px)}.letter{padding:17px 12px}.message{font-size:14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<main class="scene">
+<p class="eyebrow">a little love note</p>
+<h1>Gửi anh ❤️</h1>
+<p class="hint" id="hint">Có một chiếc thư nhỏ dành cho anh… Chạm để mở nha 💌</p>
+<div class="wrap">
+<button class="envelope" id="envelope" aria-label="Chạm để mở lá thư" aria-expanded="false">
+<span class="back"></span>
+<span class="letter">
+<span class="letter-heart">♡</span>
+<span class="message">
+<p>Dear anh iu dấu,</p>
+<p>Hôm nay anh làm việc có mệt hông nè.</p>
+<p>Nhớ ăn uống nghỉ ngơi sớm đó nha.</p>
+<p>Tập cơ bụng cho em chưa dạ ^^.</p>
+<p class="sign">Iu anh ♡</p>
+</span>
+</span>
+<span class="flap"></span><span class="pocket"></span><span class="seal">♥</span>
+</button>
+</div>
+<button class="replay" id="replay">Đóng thiệp lại ↺</button>
+<p class="footer">made with love, just for you ♡</p>
+</main>
+<script>
+const envelope=document.getElementById('envelope'),hint=document.getElementById('hint'),replay=document.getElementById('replay');
+function setOpen(open){envelope.classList.toggle('open',open);envelope.setAttribute('aria-expanded',String(open));hint.textContent=open?'Một lời nhắn nhỏ, chỉ dành cho anh ❤️':'Có một chiếc thư nhỏ dành cho anh… Chạm để mở nha 💌';replay.textContent=open?'Đóng thiệp lại ↺':'Mở thiệp lần nữa ♡';if(open)floatHearts()}
+envelope.addEventListener('click',()=>setOpen(!envelope.classList.contains('open')));
+replay.addEventListener('click',()=>setOpen(!envelope.classList.contains('open')));
+function floatHearts(){for(let i=0;i<8;i++){const el=document.createElement('span');el.className='floating';el.textContent=['♡','♥','✧'][Math.floor(Math.random()*3)];el.style.left=(8+Math.random()*84)+'vw';el.style.fontSize=(15+Math.random()*13)+'px';el.style.animationDelay=(Math.random()*.7)+'s';el.style.color=['#c95e7a','#e58ba0','#b94f6b'][Math.floor(Math.random()*3)];document.body.appendChild(el);setTimeout(()=>el.remove(),5500)}}
+</script>
+</body>
+</html>
